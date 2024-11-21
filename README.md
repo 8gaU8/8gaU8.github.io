@@ -1,10 +1,14 @@
-# Bookmark
+# 便利
+## Script
+- [GIST](https://gist.githubusercontent.com/8gaU8/9fae13ce34bfccb648ad7593c751de57/raw/7cca4b00d29eb7f45d9d130e4ab96ebb5c9a41e1/check_hackkey_data.ipynb)
+
+## Bookmark
 
 - [IMLEX Drive](https://studentuef-my.sharepoint.com/personal/muali_uef_fi/_layouts/15/onedrive.aspx?id=/personal/muali_uef_fi/Documents/IMLEX-sharedDrive&ga=1)
 - [Moodle](https://elearn.uef.fi/my/courses.php)
 - [JADe](https://cs.uef.fi/~estheg/course_JADe/)
 - [POF](https://studentuef.sharepoint.com/sites/PhotonicsOpticsFundamentals)
-
+<!-- 
 ## POF 1
 
 - <https://studentuef.sharepoint.com/sites/PhotonicsOpticsFundamentals/SitePages/1---Introduction.aspx>
@@ -90,4 +94,4 @@
 - <https://studentuef.sharepoint.com/sites/PhotonicsOpticsFundamentals/SitePages/XR-devices.aspx>
 - <https://studentuef.sharepoint.com/sites/PhotonicsOpticsFundamentals/Shared%20Documents/12%20-%20XR%20devices/POF-Lecture-12-1-VR.pdf>
 - <https://studentuef.sharepoint.com/sites/PhotonicsOpticsFundamentals/Shared%20Documents/12%20-%20XR%20devices/POF-Lecture-12-2-AR.pdf>
-- <https://studentuef.sharepoint.com/sites/PhotonicsOpticsFundamentals/Shared%20Documents/12%20-%20XR%20devices/POF-Lecture-12-3-XR-challenges.pdf>
+- <https://studentuef.sharepoint.com/sites/PhotonicsOpticsFundamentals/Shared%20Documents/12%20-%20XR%20devices/POF-Lecture-12-3-XR-challenges.pdf> -->
