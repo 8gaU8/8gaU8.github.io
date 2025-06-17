@@ -3,24 +3,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import ContactCTA from "../components/ContactCTA.astro";
 import Hero from "../components/Hero.astro";
+import EducationItem from "../components/EducationItem.astro";
 ---
 
-<BaseLayout
-  title="About | Jeanine White"
-  description="About Jeanine White Lorem Ipsum"
->
+<BaseLayout title="About | Yuya Haga" description="About Yuya Haga">
   <div class="stack gap-20">
     <main class="wrapper about">
       <Hero
         title="About"
         tagline="Thanks for stopping by. Read below to learn more about myself and my background."
       >
-        <img
+        <!-- <img
           width="1553"
           height="873"
           src="/assets/at-work.jpg"
-          alt="Jeanine White at work with a colleague"
-        />
+          alt="あとで考える"
+        /> -->
       </Hero>
 
       <section>
@@ -50,12 +48,38 @@ import Hero from "../components/Hero.astro";
           </p>
         </div>
       </section>
+
       <section>
         <h2 class="section-title">Education</h2>
         <div class="content">
-          <p>Corporis voluptates tenetur laudantium.</p>
+          <EducationItem
+            degree="International Master of Science in Imaging and Light in Extended Reality (IMLEX)"
+            university="University of Lyon 1 / Toyohashi University of Technology / University of Eastern Finland"
+            location="France / Japan / Finland"
+            period="2023 – 2025"
+            descriptionHTML=`
+      <ul class='list-disc'>
+        <li>Specialized in XR and human perception</li>
+        <li>Projects in 3 countries with international collaboration</li>
+      </ul>
+    `
+          />
+
+          <EducationItem
+            degree="Bachelor of Engineering in Computer Science and Engineering"
+            university="Toyohashi University of Technology"
+            location="Japan"
+            period="2021 – 2023"
+            descriptionHTML=`
+      <ul class='list-disc list-inside'>
+        <li>Researched signal processing for neurotechnology</li>
+        <li>Developed biosignal-driven XR systems</li>
+      </ul>
+    `
+          />
         </div>
       </section>
+
       <section>
         <h2 class="section-title">Skills</h2>
         <div class="content">
