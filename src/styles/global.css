@@ -1,3 +1,6 @@
+/* load tailwindcss */
+@import "tailwindcss";
+
 /* Global variables */
 :root {
   /* Colors */
