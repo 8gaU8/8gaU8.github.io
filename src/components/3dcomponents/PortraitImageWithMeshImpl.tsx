@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import faceInfos from "./face_mesh_data.json";
 
@@ -135,6 +135,19 @@ export function PortraitImageWithMeshImpl({
   alt = "",
 }: PortraitImageWithMeshImplProps) {
   const mountRef = useRef<HTMLDivElement>(null);
+  const [aspectRatio, setAspectRatio] = useState<number | undefined>(undefined);
+
+  // 画像のオリジナルサイズ取得
+  useEffect(() => {
+    if (!imageUrl) return;
+    const img = new window.Image();
+    img.onload = () => {
+      if (img.naturalWidth && img.naturalHeight) {
+        setAspectRatio(img.naturalWidth / img.naturalHeight);
+      }
+    };
+    img.src = imageUrl;
+  }, [imageUrl]);
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -170,17 +183,20 @@ export function PortraitImageWithMeshImpl({
   }, [imageUrl, width, height]);
 
   return (
-    <div>
-      <div ref={mountRef} />
-      <img
-        src={imageUrl}
-        width={width}
-        height={height}
-        alt={alt}
-        style={{ visibility: "hidden", position: "absolute", inset: 0 }}
-        tabIndex={-1}
-        aria-hidden="true"
-      />
-    </div>
+    <div
+      style={{
+        position: "relative",
+        width: width ? width : "100%",
+        aspectRatio: aspectRatio ? String(aspectRatio) : undefined,
+        height: "auto",
+        borderRadius: "1.5rem",
+        boxShadow: "var(--shadow-md)",
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+      ref={mountRef}
+    />
   );
 }
