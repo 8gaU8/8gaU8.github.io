@@ -1,3 +1,6 @@
+/* load tailwindcss */
+@import "tailwindcss";
+
 /* Global variables */
 :root {
   /* Colors */
@@ -16,10 +19,10 @@
   --gray-999_40: hsla(var(--gray-999-basis), 0.4);
   --gray-999: #ffffff;
 
-  --accent-light: #c561f6;
-  --accent-regular: #7611a6;
-  --accent-dark: #1c0056;
-  --accent-overlay: hsla(280, 89%, 67%, 0.33);
+  --accent-light: #b7c59a; /* 明るいモスグリーン */
+  --accent-regular: #6b8e23; /* モスグリーン（Olive Drab） */
+  --accent-dark: #3a4d1a; /* 深いモスグリーン */
+  --accent-overlay: hsla(88, 40%, 45%, 0.33); /* モスグリーン系オーバーレイ */
   --accent-subtle-overlay: var(--accent-overlay);
   --accent-text-over: var(--gray-999);
 
@@ -42,7 +45,7 @@
   );
   --gradient-accent-orange: linear-gradient(
     150deg,
-    #ca7879,
+    #e0e7b0,
     var(--accent-regular),
     var(--accent-dark)
   );
@@ -95,16 +98,16 @@
   --gray-999-basis: 225, 31%, 5%;
   --gray-999: #090b11;
 
-  --accent-light: #1c0056;
-  --accent-regular: #7611a6;
-  --accent-dark: #c561f6;
-  --accent-overlay: hsla(280, 89%, 67%, 0.33);
-  --accent-subtle-overlay: hsla(281, 81%, 36%, 0.33);
+  --accent-light: #3a4d1a;
+  --accent-regular: #6b8e23;
+  --accent-dark: #b7c59a;
+  --accent-overlay: hsla(88, 40%, 45%, 0.33);
+  --accent-subtle-overlay: hsla(88, 30%, 30%, 0.33);
   --accent-text-over: var(--gray-0);
 
   --link-color: var(--accent-dark);
 
-  --gradient-stop-1: #4c11c6;
+  --gradient-stop-1: #6b8e23;
   --gradient-subtle: linear-gradient(
     150deg,
     var(--gray-900) 19%,
@@ -112,7 +115,7 @@
   );
   --gradient-accent-orange: linear-gradient(
     150deg,
-    #ca7879,
+    #e0e7b0,
     var(--accent-regular),
     var(--accent-light)
   );

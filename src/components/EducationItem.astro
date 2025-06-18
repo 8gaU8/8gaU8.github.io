@@ -1,0 +1,18 @@
+---
+import "../styles/global.css";
+// props
+const { degree, university, location, period } = Astro.props;
+---
+
+<article class="education-item">
+  <div class="flex flex-col gap-2">
+    <p class="text-l font-semibold">{degree}</p>
+    <p class="text-md text-gray-700 font-mono">
+      {university} — <span class="italic">{location}</span>
+    </p>
+    <p class="text-sm text-gray-500">{period}</p>
+    <div class="mt-2 text-sm leading-relaxed" >
+      <slot />
+    </div>
+  </div>
+</article>

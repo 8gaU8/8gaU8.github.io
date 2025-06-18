@@ -1,4 +1,6 @@
 ---
+import { Icon as AstroIcon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
@@ -13,8 +15,11 @@ import Pill from "../components/Pill.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 // Page section components
+import { ThreeJsBackground } from "../components/3dcomponents/ThreeJsBackground";
 import ContactCTA from "../components/ContactCTA.astro";
 import Skills from "../components/Skills.astro";
+
+import PortraitImageWithMesh from "../components/PortraitImageWithMesh.astro";
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection("work"))
@@ -29,23 +34,24 @@ const projects = (await getCollection("work"))
   <div class="stack gap-20 lg:gap-48">
     <div class="wrapper stack gap-8 lg:gap-20">
       <header class="hero">
+        <ThreeJsBackground client:load />
         <Hero
-          title="Hello, my name is Jeanine White"
-          tagline="I am a Creative Developer who is currently based in Portland, Oregon."
+          title="Hello, my name is Yuya Haga"
+          tagline="Bringing Technology Closer to the Human Experience"
           align="start"
         >
           <div class="roles">
             <Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
             <Pill><Icon icon="microphone-stage" size="1.33em" /> Speaker</Pill>
-            <Pill><Icon icon="pencil-line" size="1.33em" /> Writer</Pill>
+            <Pill><Icon icon="microphone-stage" size="1.33em" /> Musician</Pill>
           </div>
         </Hero>
 
-        <img
-          alt="Jeanine White smiling in a red plaid shirt and tortoise shell glasses"
-          width="480"
-          height="620"
-          src="/assets/portrait.jpg"
+        <PortraitImageWithMesh
+          imageUrl="/assets/portrait.jpg"
+          width={480 * 0.5}
+          height={620 * 0.5}
+          alt="Me at Ghent, Belgium"
         />
       </header>
 
@@ -81,34 +87,6 @@ const projects = (await getCollection("work"))
           </CallToAction>
         </div>
       </section>
-
-      <section class="section with-background bg-variant">
-        <header class="section-header stack gap-2 lg:gap-4">
-          <h3>Mentions</h3>
-          <p>
-            I have been fortunate enough to receive praise for my work in
-            several publications. Take a look below to learn more.
-          </p>
-        </header>
-
-        <div class="gallery">
-          <Grid variant="small">
-            {
-              [
-                "Medium",
-                "BuzzFeed",
-                "The Next Web",
-                "awwwards.",
-                "TechCrunch",
-              ].map((brand) => (
-                <li class="mention-card">
-                  <p>{brand}</p>
-                </li>
-              ))
-            }
-          </Grid>
-        </div>
-      </section>
     </main>
 
     <ContactCTA />
@@ -117,10 +95,21 @@ const projects = (await getCollection("work"))
 
 <style>
   .hero {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+  }
+
+  .hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    display: block;
   }
 
   .roles {
