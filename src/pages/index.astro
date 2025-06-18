@@ -43,26 +43,16 @@ const projects = (await getCollection("work"))
           <div class="roles">
             <Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
             <Pill><Icon icon="microphone-stage" size="1.33em" /> Speaker</Pill>
-            <!-- <Pill><Icon icon="microphone-stage" size="1.33em" /> Musician</Pill> -->
-            <Pill> <AstroIcon name="mdi:home" size="1.33em" />Test</Pill>
+            <Pill><Icon icon="microphone-stage" size="1.33em" /> Musician</Pill>
           </div>
         </Hero>
 
-        <!-- <img
+        <PortraitImageWithMesh
+          imageUrl="/assets/portrait.jpg"
+          width={480 * 0.8}
+          height={620 * 0.8}
           alt="Me at Ghent, Belgium"
-          width="480"
-          height="620"
-          src="/assets/portrait.jpg"
-        /> -->
-        <div>
-          <PortraitImageWithMesh
-            imageUrl="/assets/portrait.jpg"
-            width={480}
-            height={620}
-            alt="Me at Ghent, Belgium"
-            client:load
-          />
-        </div>
+        />
       </header>
 
       <Skills />
