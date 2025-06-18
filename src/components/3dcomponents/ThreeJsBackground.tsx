@@ -1,5 +1,3 @@
-// import "../../styles/global.css"; // グローバルCSSをインポート
-
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { AsciiEffect } from "three-stdlib";
@@ -69,10 +67,13 @@ export function ThreeJsBackground() {
     animate();
 
     function onWindowResize() {
-      camera.aspect = width / height;
+      if (!mount) return;
+      const newWidth = mount.clientWidth;
+      const newHeight = mount.clientHeight;
+      camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-      effect.setSize(width, height);
+      renderer.setSize(newWidth, newHeight);
+      effect.setSize(newWidth, newHeight);
     }
     window.addEventListener("resize", onWindowResize);
 
@@ -95,6 +96,7 @@ export function ThreeJsBackground() {
         zIndex: -1,
         width: "100%",
         height: "100%",
+        aspectRatio: "5 / 4", // 例: 5:4 のアスペクト比を常に維持
         pointerEvents: "none",
       }}
       aria-hidden="true"
