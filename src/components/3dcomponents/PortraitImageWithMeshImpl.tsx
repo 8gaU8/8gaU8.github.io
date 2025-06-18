@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import * as THREE from "three";
 import faceInfos from "./face_mesh_data.json";
 
@@ -33,7 +33,7 @@ function initThreeScene(width: number, height: number, dpr: number) {
 }
 
 // テクスチャ付きPlane生成
-function addTexturedPlane(
+function createTexturedPlane(
   scene: THREE.Scene,
   imageUrl: string,
   planeWidth: number,
@@ -44,12 +44,13 @@ function addTexturedPlane(
     const geometry = new THREE.PlaneGeometry(planeWidth, planeHeight);
     const material = new THREE.MeshBasicMaterial({ map: texture });
     const plane = new THREE.Mesh(geometry, material);
+    material.needsUpdate = false;
     scene.add(plane);
   });
 }
 
-// ランドマークライン生成
-function addLandmarkLines(scene: THREE.Scene) {
+// ランドマークライン生成（Groupを返すように変更）
+function createLandmarkLines() {
   const landmarks = faceInfos.landmarks;
   const points = landmarks.map((landmark) => {
     const x = landmark.x - 0.5;
@@ -79,7 +80,7 @@ function addLandmarkLines(scene: THREE.Scene) {
       });
     }
   }
-  scene.add(lines);
+  return lines;
 }
 
 // サイズ・カメラ更新
@@ -135,7 +136,9 @@ export function PortraitImageWithMeshImpl({
   alt = "",
 }: PortraitImageWithMeshImplProps) {
   const mountRef = useRef<HTMLDivElement>(null);
+  const linesRef = useRef<THREE.Group>(null);
   const [aspectRatio, setAspectRatio] = useState<number | undefined>(undefined);
+  const [linesVisible, setLinesVisible] = useState(true);
 
   // 画像のオリジナルサイズ取得
   useEffect(() => {
@@ -149,6 +152,7 @@ export function PortraitImageWithMeshImpl({
     img.src = imageUrl;
   }, [imageUrl]);
 
+  // Three.js初期化
   useEffect(() => {
     const mount = mountRef.current;
     if (!mount) return;
@@ -161,8 +165,15 @@ export function PortraitImageWithMeshImpl({
       dpr
     );
     mount.appendChild(renderer.domElement);
-    addTexturedPlane(scene, imageUrl, planeWidth, planeHeight);
-    addLandmarkLines(scene);
+    createTexturedPlane(scene, imageUrl, planeWidth, planeHeight);
+
+    // ランドマークライン生成・追加
+    const lines = createLandmarkLines();
+    lines.visible = linesVisible;
+    linesRef.current = lines;
+    scene.add(lines);
+
+
     let animationId: number;
     function animate() {
       renderer.render(scene, camera);
@@ -180,7 +191,12 @@ export function PortraitImageWithMeshImpl({
       mount.removeChild(renderer.domElement);
       renderer.dispose();
     };
-  }, [imageUrl, width, height]);
+  }, [imageUrl, width, height, linesVisible]);
+
+  // クリック/タップでvisible切り替え
+  const handleToggle = useCallback(() => {
+    setLinesVisible((v) => !v);
+  }, []);
 
   return (
     <div
@@ -195,8 +211,12 @@ export function PortraitImageWithMeshImpl({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        cursor: "pointer",
       }}
       ref={mountRef}
+      onClick={handleToggle}
+      onTouchStart={handleToggle}
+      title="メッシュの表示/非表示を切り替え"
     />
   );
 }
