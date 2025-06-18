@@ -1,0 +1,16 @@
+---
+import { PortraitImageWithMeshImpl } from "./3dcomponents/PortraitImageWithMesh.jsx";
+const { imageUrl = "/assets/portrait.jpg", width = 480, height = 620, alt = "" } = Astro.props;
+---
+
+<div
+  style="display: flex; justify-content: center; align-items: center; width: 100%;"
+>
+  <PortraitImageWithMeshImpl
+    imageUrl={imageUrl}
+    width={width}
+    height={height}
+    alt={alt}
+    client:load
+  />
+</div>

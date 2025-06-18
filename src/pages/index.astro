@@ -1,7 +1,7 @@
 ---
 import { Icon as AstroIcon } from "astro-icon/components";
-import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -18,6 +18,8 @@ import PortfolioPreview from "../components/PortfolioPreview.astro";
 import { ThreeJsBackground } from "../components/3dcomponents/ThreeJsBackground";
 import ContactCTA from "../components/ContactCTA.astro";
 import Skills from "../components/Skills.astro";
+
+import PortraitImageWithMesh from "../components/PortraitImageWithMesh.astro";
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection("work"))
@@ -46,14 +48,21 @@ const projects = (await getCollection("work"))
           </div>
         </Hero>
 
-        <Image
+        <!-- <img
           alt="Me at Ghent, Belgium"
           width="480"
           height="620"
           src="/assets/portrait.jpg"
-          decoding="async"
-          loading="lazy"
-        />
+        /> -->
+        <div>
+          <PortraitImageWithMesh
+            imageUrl="/assets/portrait.jpg"
+            width={480}
+            height={620}
+            alt="Me at Ghent, Belgium"
+            client:load
+          />
+        </div>
       </header>
 
       <Skills />
