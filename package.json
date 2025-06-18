@@ -15,12 +15,15 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "astro": "^5.9.4",
+    "astro-icon": "^1.1.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.10",
-    "three": "^0.177.0"
+    "three": "^0.177.0",
+    "three-stdlib": "^2.36.0"
   },
   "devDependencies": {
+    "@iconify-json/mdi": "^1.2.3",
     "@types/three": "^0.177.0"
   }
 }
