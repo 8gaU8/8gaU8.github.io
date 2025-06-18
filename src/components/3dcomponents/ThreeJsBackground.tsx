@@ -1,3 +1,5 @@
+// import "../../styles/global.css"; // グローバルCSSをインポート
+
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { AsciiEffect } from "three-stdlib";
@@ -43,7 +45,6 @@ export function ThreeJsBackground() {
     function setEffectColor() {
       const isDark = document.documentElement.classList.contains("theme-dark");
       // CSS変数から色を取得
-      // const style = getComputedStyle(document.documentElement);
       let color = "#007700"; // デフォルトの色
       if (isDark) color = "#00ff00";
       console.log("Effect color:", color, "isDark:", isDark);
@@ -91,7 +92,7 @@ export function ThreeJsBackground() {
       style={{
         position: "absolute",
         inset: 0,
-        zIndex: 0,
+        zIndex: -1,
         width: "100%",
         height: "100%",
         pointerEvents: "none",
