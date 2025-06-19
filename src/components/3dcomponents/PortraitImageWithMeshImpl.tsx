@@ -19,7 +19,7 @@ function initThreeScene(width: number, height: number, dpr: number) {
     top,
     bottom,
     near,
-    far
+    far,
   );
   camera.position.z = 1;
   const scene = new THREE.Scene();
@@ -37,7 +37,7 @@ function createTexturedPlane(
   scene: THREE.Scene,
   imageUrl: string,
   planeWidth: number,
-  planeHeight: number
+  planeHeight: number,
 ) {
   const textureLoader = new THREE.TextureLoader();
   textureLoader.load(imageUrl, (texture) => {
@@ -89,7 +89,7 @@ function updateCameraAndRenderer(
   renderer: THREE.WebGLRenderer,
   width: number,
   height: number,
-  dpr: number
+  dpr: number,
 ) {
   const aspect = width / height;
   const planeHeight = 1;
@@ -109,7 +109,7 @@ function handleResize(
   mount: HTMLDivElement,
   camera: THREE.OrthographicCamera,
   renderer: THREE.WebGLRenderer,
-  dpr: number
+  dpr: number,
 ) {
   return (entries: ResizeObserverEntry[]) => {
     for (let entry of entries) {
@@ -162,7 +162,7 @@ export function PortraitImageWithMeshImpl({
     const { scene, camera, renderer, planeWidth, planeHeight } = initThreeScene(
       w,
       h,
-      dpr
+      dpr,
     );
     mount.appendChild(renderer.domElement);
     createTexturedPlane(scene, imageUrl, planeWidth, planeHeight);
@@ -173,7 +173,6 @@ export function PortraitImageWithMeshImpl({
     linesRef.current = lines;
     scene.add(lines);
 
-
     let animationId: number;
     function animate() {
       renderer.render(scene, camera);
@@ -182,7 +181,7 @@ export function PortraitImageWithMeshImpl({
     animate();
     // ResizeObserverで親サイズ変化を監視
     const resizeObserver = new window.ResizeObserver(
-      handleResize(mount, camera, renderer, dpr)
+      handleResize(mount, camera, renderer, dpr),
     );
     resizeObserver.observe(mount);
     return () => {
