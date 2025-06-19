@@ -1,6 +1,4 @@
 ---
-import { Icon as AstroIcon } from "astro-icon/components";
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
@@ -36,9 +34,9 @@ const projects = (await getCollection("work"))
       <header class="hero">
         <ThreeJsBackground client:load />
         <Hero
-          title="Hello, my name is Yuya Haga"
-          tagline="Bringing Technology Closer to the Human Experience"
           align="start"
+          tagline="Bringing Technology Closer to the Human Experience"
+          title="Hello, my name is Yuya Haga"
         >
           <div class="roles">
             <Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
@@ -48,10 +46,10 @@ const projects = (await getCollection("work"))
         </Hero>
 
         <PortraitImageWithMesh
+          alt="Me at Ghent, Belgium"
+          height={620 * 0.5}
           imageUrl="/assets/portrait.jpg"
           width={480 * 0.5}
-          height={620 * 0.5}
-          alt="Me at Ghent, Belgium"
         />
       </header>
 

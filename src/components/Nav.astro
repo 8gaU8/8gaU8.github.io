@@ -36,18 +36,15 @@ const isCurrentPage = (href: string) => {
 
 <nav>
   <div class="menu-header">
-    <a href="/" class="site-title">
+    <a class="site-title" href="/">
       <Icon
-        icon="terminal-window"
-        color="var(--accent-regular)"
-        size="1.6em"
-        gradient
+        color="var(--accent-regular)"         gradient         icon="terminal-window"         size="1.6em"
       />
       Yuya Haga's Portfolio
     </a>
     <menu-button>
       <template>
-        <button class="menu-button" aria-expanded="false">
+        <button aria-expanded="false" class="menu-button">
           <span class="sr-only">Menu</span>
           <Icon icon="list" />
         </button>
@@ -76,7 +73,7 @@ const isCurrentPage = (href: string) => {
       <div class="socials">
         {
           iconLinks.map(({ href, icon, label }) => (
-            <a href={href} class="social">
+            <a class="social" href={href}>
               <span class="sr-only">{label}</span>
               <Icon icon={icon} />
             </a>
@@ -85,7 +82,7 @@ const isCurrentPage = (href: string) => {
       </div>
     </div>
   </noscript>
-  <div id="menu-content" hidden>
+  <div hidden id="menu-content">
     <ul class="nav-items">
       {
         textLinks.map(({ label, href }) => (
@@ -105,7 +102,7 @@ const isCurrentPage = (href: string) => {
       <div class="socials">
         {
           iconLinks.map(({ href, icon, label }) => (
-            <a href={href} class="social">
+            <a class="social" href={href}>
               <span class="sr-only">{label}</span>
               <Icon icon={icon} />
             </a>

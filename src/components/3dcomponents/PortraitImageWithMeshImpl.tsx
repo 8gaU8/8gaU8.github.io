@@ -112,7 +112,7 @@ function handleResize(
   dpr: number,
 ) {
   return (entries: ResizeObserverEntry[]) => {
-    for (let entry of entries) {
+    for (const entry of entries) {
       const newW = entry.contentRect.width;
       const newH = entry.contentRect.height;
       if (newW && newH) {
