@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^6.3.2",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.2.3",
-    "@types/three": "^0.177.0"
+    "@types/three": "^0.177.0",
+    "husky": "^8.0.0"
   }
 }

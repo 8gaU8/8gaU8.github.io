@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+act --container-architecture linux/amd64 -j build --artifact-server-path /tmp/artifacts
