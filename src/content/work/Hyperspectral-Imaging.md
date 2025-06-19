@@ -12,7 +12,6 @@ tags:
   - Data Science
 ---
 
-
 # Header 1
 
 > Hello

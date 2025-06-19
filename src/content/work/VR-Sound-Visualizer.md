@@ -14,7 +14,7 @@ tags:
 
 ## Concept
 
-> *Feel the sound*
+> _Feel the sound_
 
 Visit our web demo. [vr-sound-visualizer](https://8gau8.github.io/vr-sound-visualizer/)
 
