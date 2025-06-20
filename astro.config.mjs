@@ -7,6 +7,8 @@ import react from "@astrojs/react";
 
 import icon from "astro-icon";
 
+import mdx from "@astrojs/mdx";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://8gaU8.github.io",
@@ -15,5 +17,13 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [react(), icon()],
+  integrations: [react(), icon(), mdx()],
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: "github-light",
+        dark: "dracula",
+      },
+    },
+  },
 });
