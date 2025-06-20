@@ -12,7 +12,7 @@ tags:
   - Data Science
 ---
 
-import { Image } from "astro:assets";
+import ImageCarousel from "../../components/ImageCarousel.astro";
 
 ## Overview
 
@@ -28,10 +28,14 @@ The module supports loading and processing hyperspectral images from different s
 - **Specim**: A hyperspectral camera that provides images in a specific format.
 
 
-![Hyperspectral Image Example](/assets/asi/spectral1.png)
-
-![Hyperspectral Image Example](/assets/asi/spectral2.png)
-
+<ImageCarousel
+  images={[
+    "/assets/asi/spectral2.png",
+    "/assets/asi/spectral1.png",
+    "/assets/asi/spectral2.png",
+  ]}
+  alt="Hyperspectral Image Example"
+/>
 
 ## Example Usage
 
