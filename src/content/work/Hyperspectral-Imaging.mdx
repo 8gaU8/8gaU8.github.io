@@ -1,0 +1,80 @@
+---
+title: Hyperspectral Imaging
+publishDate: 2024-12-01 00:00:00
+img: /assets/asi/powder.png
+img_alt: Segmentation of a hyperspectral image
+description: |
+  I developed python module for hyperspectral image processing, and scripts for segmentation.
+
+tags:
+  - Image Processing
+  - Machine Learning
+  - Data Science
+---
+
+import { Image } from "astro:assets";
+
+## Overview
+
+> Code: [`8gaU8/asimodule`](https://github.com/8gaU8/asimodule)
+
+This module provides tools and scripts for hyperspectral image analysis, preprocessing, segmentation, and visualization, primarily for laboratory and research use. It includes utilities for handling data from various hyperspectral imaging devices (e.g., Nuance, Specim, Tunable), as well as scripts for specific homework assignments and experiments.
+
+## Data Collection
+
+The module supports loading and processing hyperspectral images from different sources, including:
+
+- **Nuance**: A hyperspectral imaging system that captures images across multiple wavelengths.
+- **Specim**: A hyperspectral camera that provides images in a specific format.
+
+<Image
+  src="/assets/asi/spectral1.png"
+  alt="Hyperspectral Image Example"
+  width="60%"
+  height="60%"
+/>
+
+<Image
+  src="/assets/asi/spectral2.png"
+  alt="Hyperspectral Image Example"
+  width="60%"
+  height="60%"
+/>
+
+## Example Usage
+
+### Importing and Using the Package
+
+```python
+from asi import preprocess
+from asi.io import load_spectral_image
+
+# Load spectral image and reference images
+spectral_image, env_header = load_spectral_image('path/to/image')
+whiteref, _ = load_spectral_image('path/to/white_reference')
+darkref, _ = load_spectral_image('path/to/dark_reference')
+
+# Apply white correction
+corrected = preprocess.white_correction(spectral_image, whiteref, darkref)
+
+# Or, load and correct in one step
+corrected, header = preprocess.load_white_corrected(
+    'path/to/image',
+    'path/to/white_reference',
+    'path/to/dark_reference'
+)
+
+# If you have a white reference region in the image
+white_region = (slice(0, 10), slice(0, 10))  # Example region
+corrected = preprocess.white_correction_with_selected_region(spectral_image, white_region)
+```
+
+### Running an example script (segmentation)
+
+To run a specific script (e.g., for Nuance data):
+
+```bash
+# Run the segmentation example for Nuance data
+# save results to 'example_results' directory
+python example-segmentation-ir.py
+```
