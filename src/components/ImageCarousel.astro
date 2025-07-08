@@ -1,0 +1,7 @@
+---
+// @ts-check
+import { ImageCarouselImpl } from "./ImageCarouselImpl";
+const { images, alt = "" } = Astro.props;
+---
+
+<ImageCarouselImpl alt={alt} client:load images={images} />

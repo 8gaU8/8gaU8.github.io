@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^6.3.2",
+    "@astrojs/mdx": "^4.3.0",
     "@astrojs/react": "^4.3.0",
     "@astrojs/ts-plugin": "^1.10.4",
     "@tailwindcss/vite": "^4.1.10",
@@ -22,6 +23,7 @@
     "astro-icon": "^1.1.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-responsive-carousel": "^3.2.23",
     "tailwindcss": "^4.1.10",
     "three": "^0.177.0",
     "three-stdlib": "^2.36.0"
