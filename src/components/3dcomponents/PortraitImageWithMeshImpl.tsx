@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import * as THREE from "three";
 import faceInfos from "./face_mesh_data.json";
-import { createTexturedPlane, handleResize, initThreeScene } from "./threeUtils";
-
+import {
+  createTexturedPlane,
+  handleResize,
+  initThreeScene,
+} from "./threeUtils";
 
 // ランドマークライン生成（Groupを返すように変更）
 function createLandmarkLines() {
@@ -37,7 +40,6 @@ function createLandmarkLines() {
   }
   return lines;
 }
-
 
 type PortraitImageWithMeshImplProps = {
   imageUrl: string;
@@ -77,13 +79,9 @@ export function PortraitImageWithMeshImpl({
     const w = mount.clientWidth || width || 480;
     const h = mount.clientHeight || height || 620;
     const dpr = window.devicePixelRatio || 1;
-    const { scene, camera, renderer, planeWidth, planeHeight } = initThreeScene(
-      w,
-      h,
-      dpr,
-    );
+    const { scene, camera, renderer } = initThreeScene(w, h, dpr);
     mount.appendChild(renderer.domElement);
-    createTexturedPlane(scene, imageUrl, planeWidth, planeHeight);
+    createTexturedPlane(scene, imageUrl);
 
     // ランドマークライン生成・追加
     const lines = createLandmarkLines();

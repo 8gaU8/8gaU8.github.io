@@ -17,7 +17,7 @@ export function initThreeScene(width: number, height: number, dpr: number) {
     top,
     bottom,
     near,
-    far
+    far,
   );
   camera.position.z = 1;
   const scene = new THREE.Scene();
@@ -31,23 +31,11 @@ export function initThreeScene(width: number, height: number, dpr: number) {
 }
 
 // テクスチャ付きPlane生成
-export function createTexturedPlane(
-  scene: THREE.Scene,
-  imageUrl: string,
-  planeWidth: number,
-  planeHeight: number,
-) {
+export function createTexturedPlane(scene: THREE.Scene, imageUrl: string) {
   const textureLoader = new THREE.TextureLoader();
   textureLoader.load(imageUrl, (texture) => {
     texture.colorSpace = THREE.SRGBColorSpace; // sRGBカラースペースを使用
     scene.background = texture; // 背景として設定
-    // // use sRGB color space for better color accuracy
-    // texture.colorSpace = THREE.SRGBColorSpace
-    // const geometry = new THREE.PlaneGeometry(planeWidth, planeHeight);
-    // const material = new THREE.MeshStandardMaterial({ map: texture });
-    // const plane = new THREE.Mesh(geometry, material);
-    // material.needsUpdate = false;
-    // scene.add(plane);
   });
 }
 

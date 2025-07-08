@@ -43,17 +43,27 @@ type onClickHandlerType = (e: React.MouseEvent<HTMLButtonElement>) => void;
 const renderArrowPrev = (
   onClickHandler: onClickHandlerType,
   hasPrev: boolean,
-  label: string
+  label: string,
 ) => (
-  <ArrowButton direction="left" onClick={onClickHandler} label={label} visible={hasPrev} />
+  <ArrowButton
+    direction="left"
+    onClick={onClickHandler}
+    label={label}
+    visible={hasPrev}
+  />
 );
 
 const renderArrowNext = (
   onClickHandler: onClickHandlerType,
   hasNext: boolean,
-  label: string
+  label: string,
 ) => (
-  <ArrowButton direction="right" onClick={onClickHandler} label={label} visible={hasNext} />
+  <ArrowButton
+    direction="right"
+    onClick={onClickHandler}
+    label={label}
+    visible={hasNext}
+  />
 );
 
 type ImageCarouselImplProps = {
@@ -61,7 +71,10 @@ type ImageCarouselImplProps = {
   alt?: string;
 };
 
-export function ImageCarouselImpl({ images, alt = "" }: ImageCarouselImplProps) {
+export function ImageCarouselImpl({
+  images,
+  alt = "",
+}: ImageCarouselImplProps) {
   return (
     <Carousel
       showThumbs={true}
