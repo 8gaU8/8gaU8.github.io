@@ -1,22 +1,77 @@
 ---
-title: World Model
-publishDate: 2019-10-02 00:00:00
-img: /assets/stock-4.jpg
-img_alt: Soft pink and baby blue water ripples together in a subtle texture.
+title: "World Model: Emergent Communication with World Models"
+publishDate: 2021-06-30 00:00:00
+img: /assets/world-model/poster.png
+img_alt: A poster of our work on World Model
 description: |
-  We developed brand positioning and design assets for the launch
-  of a new colored water product.
+  We developed a world model that learns to communicate in a multi-agent environment. Our model contains two types of agents: an observer and a listener.
 tags:
   - Reinforcement Learning
-  - World Model
+  - Deep Learning
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere commodo venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam non ligula vel metus efficitur hendrerit. In hac habitasse platea dictumst. Praesent et mauris ut mi dapibus semper. Curabitur tortor justo, efficitur sit amet pretium cursus, porta eget odio. Cras ac venenatis dolor. Donec laoreet posuere malesuada. Curabitur nec mi tempor, placerat leo sit amet, tincidunt est. Quisque pellentesque venenatis magna, eget tristique nibh pulvinar in. Vestibulum vitae volutpat arcu. Aenean ut malesuada odio, sit amet pellentesque odio. Suspendisse nunc elit, blandit nec hendrerit non, aliquet at magna. Donec id leo ut nulla sagittis sodales.
+> Table of Contents
 
-Integer vitae nibh elit. Suspendisse eget urna eu neque bibendum pharetra. Sed interdum lectus sem, in pulvinar magna dignissim vel. Quisque maximus at urna nec laoreet. Suspendisse potenti. Vestibulum rhoncus sem ut mi pellentesque, in vestibulum erat blandit. Aliquam sodales dui ac maximus consectetur. Duis quis est vehicula, imperdiet nisl nec, fermentum erat. Duis tortor diam, pharetra eu euismod in, vehicula non eros. Curabitur facilisis dui at erat ultrices gravida. In at nunc ultricies, pulvinar mi vel, sagittis mauris. Praesent pharetra posuere purus ac imperdiet. Nulla facilisi.
+- [Overview](#overview)
+  - [Model and Setup](#model-and-setup)
+  - [Experiments \& Results](#experiments--results)
+  - [Conclusion \& Future Work](#conclusion--future-work)
+- [Award](#award)
 
-Sed pulvinar porttitor mi in ultricies. Etiam non dolor gravida eros pulvinar pellentesque et dictum ex. Proin eu ornare ligula, sed condimentum dui. Vivamus tincidunt tellus mi, sed semper ipsum pharetra a. Suspendisse sollicitudin at sapien nec volutpat. Etiam justo urna, laoreet ac lacus sed, ultricies facilisis dolor. Integer posuere, metus vel viverra gravida, risus elit ornare magna, id feugiat erat risus ullamcorper libero. Proin vitae diam auctor, laoreet lorem vitae, varius tellus.
+## Overview
 
-Mauris sed eros in ex maximus volutpat. Suspendisse potenti. Donec lacinia justo consectetur sagittis tempor. Proin ullamcorper nisi vitae auctor rhoncus. Sed tristique aliquam augue. Pellentesque vitae fringilla ligula. Nulla arcu elit, efficitur eu nunc malesuada, eleifend tincidunt orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer mattis orci in bibendum ultricies. Quisque a dui erat. Phasellus et vulputate ipsum. Proin metus ex, lobortis nec ornare eget, bibendum ut sapien. Aliquam in dolor lobortis, aliquam tellus a, congue augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+> Let agents talk!
 
-Aenean pretium purus augue, ut bibendum erat convallis quis. Cras condimentum quis velit ac mollis. Suspendisse non purus fringilla, venenatis nisl porta, finibus odio. Curabitur aliquet metus faucibus libero interdum euismod. Morbi sed magna nisl. Morbi odio nibh, facilisis vel sapien eu, tempus tincidunt erat. Nullam erat velit, sagittis at purus quis, tristique scelerisque tortor. Pellentesque lacinia tortor id est aliquam viverra. Vestibulum et diam ac ipsum mollis fringilla.
+The study aims to achieve more human-like and flexible communication by enabling agents to share information from their unique perspectives. The researchers propose and test a model where the agents' architecture adapts at each step of a task.
+
+### Model and Setup
+
+- **Amodal World Architecture**
+  The environment is a grid world.
+
+- **Speaker Agent**
+   Has a limited, partial view of the grid. Its role is to generate a message (a vector) to send to the Listener. It learns using the REINFORCE algorithm, rewarded based on the Listener's success.
+
+- **Listener Agent**
+  Cannot see the grid world directly. It must act based on the message from the Speaker. Its goal is to navigate to a target location. It learns through imitation learning.
+
+### Experiments & Results
+
+The research was conducted in three steps with increasing complexity:
+
+- **Step 1: Simple Navigation**
+  - **Task**
+
+    The Listener must navigate to a goal on a simple, open grid.
+
+  - **Result**
+
+    The agents achieved a 99.5% success rate, demonstrating that they successfully developed a basic communication protocol for navigation.
+
+- **Step 2: Environmental Change**
+  - **Task**
+
+    Walls were added to the grid, creating a more complex maze.
+
+  - **Result**
+
+    The agents adapted to the new map and achieved a 92.0% success rate without needing to create new messages, showing the communication protocol could generalize.
+
+- **Step 3: Conditional Change**
+  - **Task**
+
+    A "poison" tile was added to the grid. The Listener had to reach the goal while avoiding the poison. This required the Speaker to convey more complex information (e.g., "go here, but avoid that").
+
+  - **Result**
+  
+    The success rate dropped significantly to 18.7%. While low, the results showed the agents were beginning to learn to use messages to avoid the poison, indicating a more complex communication system was emerging.
+
+### Conclusion & Future Work
+
+The study demonstrates that agents can learn to develop a communication system from scratch to solve cooperative tasks. The system showed an ability to generalize to new environments and adapt to more complex rules.
+
+## Award
+
+Our work on World Model was awarded the Best Paper Award at the 2021 World Models Workshop, which was held by University Tokyo.
+
+Official website: [World Models Workshop (JA)](https://weblab.t.u-tokyo.ac.jp/lecture/course-list/world-model/)
