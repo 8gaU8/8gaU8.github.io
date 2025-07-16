@@ -6,10 +6,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "prepreview": "astro build",
     "astro": "astro",
     "format": "prettier --write .",
     "lint": "eslint . --ext .astro,.js,.ts,.jsx,.tsx --fix",
-    "fix": "eslint . --ext .astro,.js,.ts,.jsx,.tsx --fix && prettier --write ."
+    "fix": "eslint . --ext .astro,.js,.ts,.jsx,.tsx --fix && prettier --write .",
+    "action:test": " act --container-architecture linux/amd64 -j build --artifact-server-path /tmp/artifacts -s GITHUB_TOKEN=\"$(gh auth token)\""
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^6.3.2",
